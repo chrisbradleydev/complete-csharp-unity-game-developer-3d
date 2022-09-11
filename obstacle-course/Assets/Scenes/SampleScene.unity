@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 1159155428}
   - component: {fileID: 1159155427}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Dropper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -953,6 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488d57936d08f427e9d319525eb7c1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToWait: 5
 --- !u!65 &1159155428
 BoxCollider:
   m_ObjectHideFlags: 0
