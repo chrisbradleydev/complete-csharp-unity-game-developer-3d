@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectHit : MonoBehaviour
+public class Scorer : MonoBehaviour
 {
+    int hits = 0;
+
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<MeshRenderer>().material.color = Color.red;
+        hits++;
+        Debug.Log("You've bumped into a thing this many times: " + hits);
     }
 }
