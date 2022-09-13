@@ -10,6 +10,8 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource audioSource;
 
+    bool isTransitioning = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,10 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (isTransitioning)
+        {
+            return;
+        }
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -30,10 +36,13 @@ public class CollisionHandler : MonoBehaviour
                 StartCrashSequence();
                 break;
         }
+        
     }
 
     void StartSuccessSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(success);
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", levelLoadDelay);
@@ -41,6 +50,8 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(explode);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", levelLoadDelay);
